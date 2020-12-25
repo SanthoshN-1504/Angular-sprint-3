@@ -1,0 +1,109 @@
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+        <div class="container" style="background-color:lightsteelblue">
+            <!-- <h2 class="text-info" style="color: black;" >Registeration Form</h2> -->
+            <h2 style="text-align: center;">Registeration Form</h2>
+            <div class="form-group"  class="shadow lg p-3 mb-5 bg-white rounded">
+
+                <label><b>User ID</b></label>
+                <input required minlength="1" type="number" placeholder="Enter the User Id" #userIdRef='ngModel'
+                    name="userId" ngModel class="form-control">
+                <div *ngIf='userIdRef.errors && userIdRef.touched' class="alert alert-danger">
+                    <div [hidden]='!userIdRef.errors.required'> Provide User Id </div>
+                </div><br>
+
+                <label><b>User Name</b></label>
+                <input required minlength="1" type="text" placeholder="Enter the User Name" #userNameRef='ngModel'
+                    name="userName" ngModel class="form-control">
+                <div *ngIf='userNameRef.errors && userNameRef.touched' class="alert alert-danger">
+                    <div [hidden]='!userNameRef.errors.required'> Provide User Name </div>
+                </div><br>
+
+
+                <label><b>First Name</b></label>
+                <input required minlength="1" type="text" placeholder="Enter the First Name" #FirstNameRef='ngModel'
+                    name="firstName" ngModel class="form-control">
+                <div *ngIf='FirstNameRef.errors && FirstNameRef.touched' class="alert alert-danger">
+                    <div [hidden]='!FirstNameRef.errors.required'> Provide First Name </div>
+                </div><br>
+
+
+                <label><b>Last Name</b></label>
+                <input required minlength="1" type="text" placeholder="Enter the Last Name" #lastNameRef='ngModel'
+                    name="lastName" ngModel class="form-control">
+                <div *ngIf='lastNameRef.errors && lastNameRef.touched' class="alert alert-danger">
+                    <div [hidden]='!lastNameRef.errors.required'> Provide Last Name </div>
+                </div><br>
+
+
+                <label><b>Email</b></label>
+                <div class="input-group mb-3">
+                    <input required type="email" class="form-control" placeholder="Enter Email" #emailRef='ngModel'
+                        pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$"
+                        name="email" ngModel class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text">@example.com</span>
+                    </div>
+                    <div *ngIf='emailRef.errors && emailRef.touched ' class="alert alert-danger">
+                        <div [hidden]='!emailRef.errors.required'> Provide Valid Email </div>
+                        <div [hidden]='!emailRef.errors.pattern'>Check the given Email Id</div>
+                    </div>
+                </div><br>
+
+
+                <label><b>Contact Number</b></label>
+                <input type="text" name="country code" value="+91" size="2" />
+                <input required minlength="10" maxlength="10" type="text" placeholder="Phone Number" #cNoRef='ngModel'
+                    name="contactNo" ngModel class="form-control">
+
+                <div *ngIf='cNoRef.errors && cNoRef.touched' class="alert alert-danger">
+                    <div [hidden]='!cNoRef.errors.required'> Provide Valid Contact Number </div>
+                </div><br>
+
+
+                <label><b>Address</b></label>
+                <td><textarea required placeholder="Address" rows="3" cols="50" #addressRef='ngModel' name="address" ngModel
+                        class="form-control"></textarea></td>
+                <div *ngIf='addressRef.errors && addressRef.touched' class="alert alert-danger">
+                    <div [hidden]='!addressRef.errors.required'> Provide Address </div>
+                </div><br>
+
+                <label><b>User Type</b></label>
+
+                <select required #userTypeRef='ngModel' name="userType" ngModel class="form-control">
+                    <option selected>TENANT</option>
+                    <option>LANDLORD</option>
+                    <option>ADMIN</option>
+                </select>
+                <div *ngIf='userTypeRef.errors && userTypeRef.touched' class="alert alert-danger">
+                    <div [hidden]='!userTypeRef.errors.required'> Provide User Type </div>
+                </div><br>
+
+
+                <label><b>Password </b></label>
+                <input required minlength="7" type="password" name="password" placeholder="Enter Password"
+                    pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[@#$%^&*]).{7,}" #passwordRef='ngModel' ngModel
+                    class="form-control">
+                <div *ngIf='passwordRef.errors && passwordRef.touched' class="alert alert-danger">
+                    <div [hidden]='!passwordRef.errors.required'> Provide Valid Password </div>
+                    <div [hidden]='!passwordRef.errors.pattern'> Password should contain atleast one
+                        capital,small,number and special character </div>
+                </div><br>
+
+
+                <label><b>Confirm Password </b></label>
+                <input required minlength="7" type="password" name="cpassword" placeholder="Enter Password"
+                    pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[@#$%^&*]).{7,}" #cPasswordRef='ngModel' ngModel
+                    class="form-control">
+                <div *ngIf='cPasswordRef.errors && cPasswordRef.touched' class="alert alert-danger">
+                    <div [hidden]='!cPasswordRef.errors.required'> Provide Valid Password </div>
+                    <div [hidden]='!cPasswordRef.errors.pattern'> Password should contain atleast one
+                        capital,small,number and special character </div>
+                </div><br>
+
+                <div style="text-align: center;">
+                    <input [disabled]="!userForm.valid" type="submit" value="Register" class="btn btn-primary">
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </form>

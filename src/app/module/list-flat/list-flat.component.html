@@ -1,0 +1,37 @@
+<head>
+</head>
+<div class="container">
+<table class="table table-striped" *ngIf="flat && flat.length > 0  else elseBlock">
+    <thead style=" text-align: center;">
+    <tr>
+        <th (click)="sort('flatId',order)" style="text-align: center;">FLAT ID</th>
+        <th (click)="sort('availability',order)" style="text-align: center;">FLAT AVAILABILITY</th>
+        <th (click)="sort('cost',order)" style="text-align: center;">FLAT COST</th>
+        <th style="text-align: center;">DELETE FLAT</th>
+        <th style="text-align: center;">EDIT FLAT</th>
+    </tr>
+    </thead>
+    <tbody  style=" text-align: center;">
+        <tr *ngFor="let f of flat | orderBy:column:order" style="text-align: center;">
+            <td style="text-align: center;"> {{f.flatId}} </td>
+            <td style="text-align: center;"> {{f.availability}} </td>
+            <td style="text-align: center;"> {{f.cost | currency:"INR"}} </td>
+            
+            <td style="text-align: center;">
+                <i class="fas fa-trash" (click)=delete(f)></i>
+            </td>
+            <td style="text-align: center;">
+             <i class="fas fa-edit" (click)=update(f)></i>
+            </td>
+            <td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock>
+    <h4 align="center"> There are no flat to display,please add the flat! </h4>
+</ng-template>
+
+</div>
+<div>
+<h2>{{message}}</h2>
+</div>

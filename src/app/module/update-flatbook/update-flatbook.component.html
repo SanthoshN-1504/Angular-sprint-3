@@ -1,0 +1,53 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>UPDATE FLATBOOK</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)' class="shadow lg p-3 mb-5 bg-white rounded">
+
+    <div class="form-group">
+
+        <label><strong>BOOKING ID: </strong></label>
+
+        <input required minlength="1" type="number" [(ngModel)]="obj1.bookingNo" readonly="readonly" #bookIdRef='ngModel'
+                name="bookingNo" ngModel class="form-control">
+
+    </div>
+
+    <div class="form-group" >
+
+        <label><strong>Check-in: </strong></label>
+
+        <input type="date" [(ngModel)]="obj1.bookingFromDate" #flatbookCheckinRef='ngModel' name="bookingFromDate" ngModel
+        class="form-control">
+
+        <div *ngIf='flatbookCheckinRef.errors && flatbookCheckinRef.touched' class="alert alert-danger">
+
+            <div [hidden]='!flatbookCheckinRef.errors.required'> Provide Check_in Date </div>
+
+        </div>
+    </div>
+<div class="form-group" >
+
+    <label><strong>Check-out: </strong></label>
+
+    <input type="date" [(ngModel)]="obj1.bookingToDate" #flatbookCheckoutRef='ngModel' name="bookingToDate" ngModel
+        class="form-control">
+
+    <div *ngIf='flatbookCheckoutRef.errors && flatbookCheckoutRef.touched' class="alert alert-danger">
+
+        <div [hidden]='!flatbookCheckoutRef.errors.required'> Provide Check_out Date </div>
+
+    </div>
+</div>
+<input [disabled]="userForm.invalid" type="submit" value="Edit Flatbook" class="btn btn-primary">
+</form>
+
+
+<div>
+<h4>{{message}}</h4>
+</div>
+

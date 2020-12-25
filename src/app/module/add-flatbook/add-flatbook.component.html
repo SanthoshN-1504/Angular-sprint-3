@@ -1,0 +1,50 @@
+<div class="container" style="background-color:lightsteelblue">
+
+    <h3 style="text-align: center;">ADD FLATBOOK</h3>
+
+    <form #userForm="ngForm" class="shadow lg p-3 mb-5 bg-white rounded">
+
+        <div class="form-group" (ngSubmit)='onSubmit(userForm.value)'>
+
+            <label><strong>BOOKING ID: </strong></label>
+
+            <input required minlength="1" type="number" #flatbookIdRef='ngModel' name="bookingNo" ngModel
+                class="form-control">
+
+            <div *ngIf='flatbookIdRef.errors && flatbookIdRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatbookIdRef.errors.required'> Provide Booking Id </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+
+            <label><strong>Check-in: </strong></label>
+
+            <input required type="date" #flatbookCheck_inRef='ngModel' name="bookingFromDate" ngModel class="form-control">
+
+            <div *ngIf='flatbookCheck_inRef.errors && flatbookCheck_inRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatbookCheck_inRef.errors.required'> Provide Check_in Date </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+
+            <label><strong>Check-out: </strong></label>
+
+            <input required type="date" #flatbookCheck_outRef='ngModel' name="bookingToDate" ngModel class="form-control">
+
+            <div *ngIf='flatbookCheck_outRef.errors && flatbookCheck_outRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatbookCheck_outRef.errors.required'> Provide Check_out Date </div>
+
+            </div>
+        </div>
+        <input [disabled]="!userForm.valid" (click) = 'onSubmit(userForm.value)' type="submit" value="Add FlatBook" class="btn btn-primary">
+    </form>
+
+
+    <div>
+        {{message}}
+    </div>

@@ -1,0 +1,35 @@
+
+        <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+            <div class="container">
+                <!-- <h2 class="text-info">TENANT LOGIN</h2> -->
+                <h2 style="text-align: center;">TENANT LOGIN</h2>
+                <div class="form-group">
+                    
+                    <table class="table table-striped">
+
+                        <tr>
+                            <td><label><b>User Name</b></label>
+                            
+                            <input required minlength="1" type="text" placeholder="Enter the User Name" #userNameRef='ngModel' name="userName" ngModel class="form-control">
+                            <div *ngIf='userNameRef.errors && userNameRef.touched' class="alert alert-danger">
+                                <div [hidden]='!userNameRef.errors.required'> Provide User Name </div>
+                            </div></td>
+                        </tr>
+
+                        <tr>
+                            <td><label><b>Password </b></label>
+                                <input required minlength="7" type="password" name="password" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[@#$%^&*]).{7,}" #passwordRef='ngModel' name="password" ngModel class="form-control">
+                                <div *ngIf='passwordRef.errors && passwordRef.touched' class="alert alert-danger">
+                                    <div [hidden]='!passwordRef.errors.required'> Provide Valid Password </div>
+                                </div></td>
+                            </tr>
+                    </table>
+
+                </div>
+                <div>
+                    <input [disabled]="!userForm.valid" type="submit" value="Login" class="btn btn-success">
+                </div>  
+            <br><br>
+            </div>
+        </form>
+

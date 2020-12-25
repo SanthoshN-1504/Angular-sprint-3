@@ -1,0 +1,172 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h2><I>Update FlatInfo</I></h2>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)' class="shadow lg p-3 mb-5 bg-white rounded">
+
+        <div class="form-group">
+
+            <label><strong> FLAT ID: </strong></label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.flatId" readonly="readonly" #bookIdRef='ngModel'
+                name="flatId" ngModel class="form-control">
+
+        </div>
+
+        <div class="form-group">
+
+            <label><strong> HOUSE NO: </strong></label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.flatAddress.houseNo" readonly="readonly" #bookIdRef='ngModel'
+                name="houseNo" ngModel class="form-control">
+
+        </div>
+
+        <div class="form-group">
+
+            <label> STREET: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.flatAddress.street" #flatStreetRef='ngModel' name="street" ngModel
+                class="form-control">
+
+            <div *ngIf='flatStreetRef.errors
+                        && flatStreetRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatStreetRef.errors.required'>
+
+                    Provide Street Name
+
+                </div>
+
+                <!-- <div *ngIf='flatStreetRef.errors.pattern'>Name should be minimum of 6 characters length</div> -->
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label> CITY: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.flatAddress.city" #flatCityRef='ngModel' name="city" ngModel
+                class="form-control">
+
+            <div *ngIf='flatCityRef.errors
+                        && flatCityRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatCityRef.errors.required'>
+
+                    Provide City Name
+
+                </div>
+
+                <!-- <div *ngIf='flatCityRef.errors.pattern'>Name should be minimum of 6 characters length</div> -->
+
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <label> STATE: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.flatAddress.state" #flatStateRef='ngModel' name="state" ngModel
+                class="form-control">
+
+            <div *ngIf='flatStateRef.errors
+                        && flatStateRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatStateRef.errors.required'>
+
+                    Provide State Name
+
+                </div>
+
+                <!-- <div *ngIf='flatStateRef.errors.pattern'>Name should be minimum of 6 characters length</div> -->
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label> PINCODE: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.flatAddress.pin" readonly="readonly" #bookIdRef='ngModel'
+                name="pin" ngModel class="form-control">
+
+        </div>
+
+        <div class="form-group">
+
+            <label> COUNTRY: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.flatAddress.country" #flatCountryRef='ngModel' name="country" ngModel
+                class="form-control">
+
+            <div *ngIf='flatCountryRef.errors
+                        && flatCountryRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatCountryRef.errors.required'>
+
+                    Provide Country Name
+
+                </div>
+
+                <!-- <div *ngIf='flatCountryRef.errors.pattern'>Name should be minimum of 6 characters length</div> -->
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label><strong> FLAT AVAILABILITY: </strong></label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.availability" #flatAvaRef='ngModel' name="availability" ngModel
+                class="form-control">
+
+            <div *ngIf='flatAvaRef.errors
+                        && flatAvaRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatAvaRef.errors.required'>
+
+                    Provide Availability of Flat
+
+                </div>
+
+                <!-- <div *ngIf='flatAvaRef.errors.pattern'>Name should be minimum of 6 characters length</div> -->
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label><strong> FLAT COST: </strong></label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.cost" #flatCostRef='ngModel' name="cost"
+                ngModel class="form-control">
+
+            <div *ngIf='flatCostRef.errors && flatCostRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!flatCostRef.errors.required'> Provide Flat Cost </div>
+
+            </div>
+        </div>
+
+    <div  style="text-align: center;">
+        <input [disabled]="userForm.invalid" (click)="onUpdate(userForm.value)" type="submit" value="Edit Flat" class="btn btn-primary">
+    </div>
+
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

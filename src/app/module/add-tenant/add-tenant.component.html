@@ -1,0 +1,40 @@
+<div class="container" style="background-color:lightsteelblue">
+
+    
+    <h3 style="text-align: center;"><b>ADD TENANT</b></h3>
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)' class="shadow lg p-3 mb-5 bg-white rounded">
+
+        <div class="form-group">
+
+            <label> <b>TENANT ID: </b> </label>
+
+            <input required minlength="1" type="number" #tenantIdRef='ngModel' name="tenantId" ngModel
+                class="form-control">
+
+            <div *ngIf='tenantIdRef.errors && tenantIdRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!tenantIdRef.errors.required'> Provide Tenant Id </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+
+            <label> <b>AGE </b></label>
+
+            <input required minlength="1" type="number" #ageRef='ngModel' name="age" ngModel class="form-control">
+
+            <div *ngIf='ageRef.errors && ageRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!ageRef.errors.required'> Provide Age </div>
+
+            </div>
+        </div>
+        <!-- <div style="text-align: center;"> -->
+            <input [disabled]="!userForm.valid" type="submit" value="Add Tenant" class="btn btn-primary">
+        <!-- </div> -->
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

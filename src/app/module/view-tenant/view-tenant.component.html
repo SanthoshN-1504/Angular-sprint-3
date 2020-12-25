@@ -1,0 +1,32 @@
+<head>
+</head>
+<div class="container">
+<table class="table table-striped" *ngIf="tenant && tenant.length > 0  else elseBlock">
+    <thead  style=" text-align: center;">
+    <tr>
+        <th>TENANT ID</th>
+        <th>AGE</th>
+        <th>DELETE TENANT</th>
+        <th>EDIT TENANT</th>
+    </tr>
+    </thead>
+    <tbody  style=" text-align: center;">
+        <tr *ngFor="let t of tenant" style="text-align: center;">
+            <td> {{t.tenantId}} </td>
+            <td> {{t.age}} </td>
+            <td >
+                <i class="fas fa-trash" (click)=delete(t)></i>
+            </td>
+            <td>
+             <i class="fas fa-edit" (click)=update(t)></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock>
+    <h4 align="center"> There are no tenant to display,please add the tenant! </h4>
+</ng-template>
+</div>
+<div>
+<h2>{{message}}</h2>
+</div>

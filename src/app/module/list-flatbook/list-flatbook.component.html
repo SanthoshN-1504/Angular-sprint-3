@@ -1,0 +1,38 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container" style="text-align: center;">
+    <table class="table table-striped" *ngIf="flatbook && flatbook.length > 0  else elseBlock">
+        <thead style="background-color: cadetblue; text-align: center;">
+        <tr style="text-align: center;">
+            <th>BOOKING ID</th>
+            <th>CHECK_IN</th>
+            <th>CHECK_OUT</th>
+            <th>DELETE FLATBOOK</th>
+            <th>EDIT FLATBOOK</th>
+        </tr>
+        </thead>
+        <tbody style="background-color: darkseagreen; text-align: center;">
+            <tr style="text-align: center;" *ngFor="let f of flatbook">
+                <td> {{f.bookingNo}} </td>
+                <td> {{f.bookingFromDate}} </td>
+                <td> {{f.bookingToDate}} </td>
+                <td style="text-align: center;">
+                <i  class="fas fa-trash" (click)=delete(f)></i>
+                </td>
+                <td style="text-align: center;">
+                 <i class="fas fa-edit" (click)=update(f)></i>
+                </td>
+                <td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no flatbooking to display,please add the flats to be booked! </h4>
+    </ng-template>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

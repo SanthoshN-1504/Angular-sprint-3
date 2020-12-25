@@ -1,0 +1,169 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>Update User Information</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)' class="shadow lg p-3 mb-5 bg-white rounded">
+
+        <div class="form-group">
+
+            <label>USER ID: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.userId" readonly="readonly"
+                #bookIdRef='ngModel' name="userId" ngModel class="form-control">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>USER NAME: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.userName" #userNameRef='ngModel' name="userName"
+                ngModel class="form-control">
+
+            <div *ngIf='userNameRef.errors
+                        && userNameRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!userNameRef.errors.required'>
+
+                    Provide User Name
+
+                </div>
+
+                <div *ngIf='userNameRef.errors.pattern'>Name should be minimum of 3 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>FIRST NAME: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.firstName" #firstNameRef='ngModel'
+                name="firstName" ngModel class="form-control">
+
+            <div *ngIf='firstNameRef.errors
+                        && firstNameRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!firstNameRef.errors.required'>
+
+                    Provide First Name
+
+                </div>
+
+                <div *ngIf='firstNameRef.errors.pattern'>Name should be minimum of 3 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>LAST NAME: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.lastName" #lastNameRef='ngModel' name="lastName"
+                ngModel class="form-control">
+
+            <div *ngIf='lastNameRef.errors
+                        && lastNameRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!lastNameRef.errors.required'>
+
+                    Provide Last Name
+
+                </div>
+
+                <div *ngIf='lastNameRef.errors.pattern'>Name should be minimum of 3 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>EMAIL : </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.email" #emailRef='ngModel' name="email" ngModel
+                class="form-control">
+
+            <div *ngIf='emailRef.errors
+                        && emailRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!emailRef.errors.required'>
+
+                    Provide Email Name
+
+                </div>
+
+                <div *ngIf='emailRef.errors.pattern'>Enter the valid Email Id</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>CONTACT NUMBER: </label>
+
+            <input required length="10" type="number" [(ngModel)]="obj1.contactNo" #contactNoRef='ngModel'
+                name="contactNo" ngModel class="form-control">
+
+            <div *ngIf='contactNoRef.errors && contactNoRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!contactNoRef.errors.required'> Provide User Contact Number </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>ADDRESS : </label>
+
+            <textarea required minlength="1" [(ngModel)]="obj1.address" #addressRef='ngModel' name="address"
+                ngModel class="form-control"></textarea>
+
+            <div *ngIf='addressRef.errors && addressRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!addressRef.errors.required'> Provide Address </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>USER TYPE: </label>
+
+            <input required minlength="6" type="text" [(ngModel)]="obj1.userType" #userType='ngModel' name="userType"
+                ngModel class="form-control">
+
+            <div *ngIf='userType.errors
+                        && userType.touched' class="alert alert-danger">
+
+                <div [hidden]='!userType.errors.required'>
+
+                    Provide User Type
+
+                </div>
+
+                <div *ngIf='userType.errors.pattern'>User type should be minimum of 5 characters length</div>
+
+            </div>
+
+        </div>
+        <input [disabled]="userForm.invalid" type="submit" value="Edit Employee" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

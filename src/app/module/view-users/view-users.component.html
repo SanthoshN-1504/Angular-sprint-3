@@ -1,0 +1,40 @@
+<head>
+</head>
+<div class="container">
+    <table class="table table-striped" *ngIf="users && users.length > 0  else elseBlock">
+        <thead style=" text-align: center;">
+    <tr>
+        <th>USER ID</th>
+        <th>USER NAME</th>
+        <th>EMAIL</th>
+        <th>CONTACT NUMBER</th>
+        <th>USER TYPE</th>
+        <th>DELETE USER</th>
+        <th>EDIT USER</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users" style="text-align: center;">
+            <td> {{u.userId}} </td>
+            <td> {{u.userName}} </td>
+            <td> {{u.email}} </td>
+            <td>{{u.contactNo}}</td>
+            <td> {{u.userType}} </td>
+            <td >
+                <i class="fas fa-trash" (click)=delete(u)></i>
+            </td>
+            <td>
+             <i class="fas fa-edit" (click)=update(u)></i>
+            </td>
+            <td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock>
+    <h4 align="center"> There are no user to display,please add the user! </h4>
+</ng-template>
+
+</div>
+<div>
+<h2>{{message}}</h2>
+</div>

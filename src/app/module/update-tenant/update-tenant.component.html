@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>Update Tenant</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)' class="shadow lg p-3 mb-5 bg-white rounded">
+
+        <div class="form-group">
+
+            <label>TENANT ID: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.tenantId" readonly="readonly" #bookIdRef='ngModel'
+                name="tenantId" ngModel class="form-control">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>AGE:</label>
+
+            <input required length="1" type="number" [(ngModel)]="obj1.age" #ageRef='ngModel' name="age" ngModel class="form-control">
+
+            <div *ngIf='ageRef.errors && ageRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!ageRef.errors.required'> Provide Age </div>
+
+            </div>
+        </div>
+
+        <input [disabled]="userForm.invalid" type="submit" value="Edit Tenant" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

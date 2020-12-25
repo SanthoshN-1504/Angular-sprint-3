@@ -1,0 +1,63 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>Update Landlord Details</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)' class="shadow lg p-3 mb-5 bg-white rounded">
+
+        <div class="form-group">
+
+            <label>LANDLORD ID: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.landlordId" readonly="readonly"
+                #landlordIdRef='ngModel' name="landlordId" ngModel class="form-control">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>LANDLORD NAME: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.landlordName" #landlordNameRef='ngModel'
+                name="landlordName" ngModel class="form-control">
+
+            <div *ngIf='landlordNameRef.errors
+                        && landlordNameRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!landlordNameRef.errors.required'>
+
+                    Provide Landlord Name
+
+                </div>
+
+                <div *ngIf='landlordNameRef.errors.pattern'>Name should be minimum of 3 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>LANDLORD AGE: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.landlordAge" #landlordAgeRef='ngModel'
+                name="landlordAge" ngModel class="form-control">
+
+            <div *ngIf='landlordAgeRef.errors && landlordAgeRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!landlordAgeRef.errors.required'> Provide Landlord Age </div>
+
+            </div>
+        </div>
+
+        <input [disabled]="userForm.invalid" type="submit" value="Edit Landlord" class="btn btn-primary">
+
+    </form>
+
+</div>
+<!-- <div>
+     <h2>{{message}}</h2> 
+</div> -->

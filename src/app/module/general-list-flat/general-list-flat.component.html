@@ -1,0 +1,52 @@
+<head>
+</head>
+<div class="container">
+<table class="table table-striped" *ngIf="flat && flat.length > 0  else elseBlock">
+    <thead>
+    <tr>
+        <th (click)="sort('flatId',order)" style="text-align: center;">FLAT ID</th>
+
+        <th style="text-align: center;">HOUSE NO</th>
+        <th style="text-align: center;">STREET</th>
+        <th (click)="sort('city',order)" style="text-align: center;">CITY</th>
+        <th (click)="sort('state',order)" style="text-align: center;">STATE</th>
+        <th style="text-align: center;">PIN CODE</th>
+        <th style="text-align: center;">COUNTRY</th>
+
+        <th style="text-align: center;">FLAT AVAILABILITY</th>
+        <th (click)="sort('cost',order)" style="text-align: center;">FLAT COST</th>
+
+        <th style="text-align: center;">FLAT BOOKING</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let f of flat | orderBy:column:order" style="text-align: center;">
+            <td style="text-align: center;"> {{f.flatId}} </td>
+
+            <td style="text-align: center;"> {{f.flatAddress.houseNo}} </td>
+            <td style="text-align: center;"> {{f.flatAddress.street}} </td>
+            <td style="text-align: center;"> {{f.flatAddress.city}} </td>
+            <td style="text-align: center;"> {{f.flatAddress.state}} </td>
+            <td style="text-align: center;"> {{f.flatAddress.pin}} </td>
+            <td style="text-align: center;"> {{f.flatAddress.country}} </td>
+
+            <td style="text-align: center;"> {{f.availability}} </td>
+            <td style="text-align: center;"> {{f.cost | currency:"INR"}} </td>
+
+            <td>
+                <button (click)="onClickBook()" class="btn btn-primary" value="Book">Book</button>
+            </td>
+           
+            <td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock>
+    <h4 align="center"> There are no flat to display,please add the flat! </h4>
+</ng-template>
+
+</div>
+<div>
+<h2>{{message}}</h2>
+</div>

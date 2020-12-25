@@ -1,0 +1,36 @@
+<head>
+</head>
+<div class="container">
+    <table class="table table-striped" *ngIf="landlords && landlords.length > 0  else elseBlock">
+        <thead style=" text-align: center;">
+        <tr>
+            <th >LANDLORD ID</th>
+            <th>LANDLORD NAME</th>
+            <th>LANDLORD AGE</th>
+        
+            <th>DELETE LANDLORD</th>
+            <th>EDIT LANDLORD</th>
+        </tr>
+        </thead>
+        <tbody style=" text-align: center;">
+            <tr *ngFor="let l of landlords" style="text-align: center;">
+                <td> {{l.landlordId}} </td>
+                <td> {{l.landlordName}} </td>
+                <td> {{l.landlordAge}} </td>
+                <td >
+                    <i class="fas fa-trash" (click)=delete(l)></i>
+                </td>
+                <td>
+                    <i class="fas fa-edit" (click)=update(l)></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 style="text-align: center;"> There are no landlords to display,please add the landlords! </h4>
+    </ng-template>
+
+</div>
+<div>
+<h2>{{message}}</h2> 
+</div> 
